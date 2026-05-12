@@ -76,7 +76,7 @@ export function ServiceAreasSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance"
+              className="mt-4 text-balance text-foreground"
             >
               Covering all of Northern Tasmania
             </motion.h2>
@@ -100,9 +100,9 @@ export function ServiceAreasSection() {
             >
               {suburbs.map((s) => (
                 <motion.div key={s} variants={item}>
-                  <Badge
+                <Badge
                     variant="secondary"
-                    className="rounded-full px-3 py-1.5 text-sm font-medium bg-background hover:bg-primary/10 hover:text-primary border border-border cursor-default transition-colors"
+                  className="cursor-default rounded-full border-2 border-border bg-background px-3 py-1.5 text-sm font-medium transition-colors hover:bg-primary/10 hover:text-primary"
                   >
                     {s}
                   </Badge>
@@ -111,7 +111,7 @@ export function ServiceAreasSection() {
               <motion.div variants={item}>
                 <Badge
                   variant="outline"
-                  className="rounded-full px-3 py-1.5 text-sm border-primary/50 text-primary cursor-default"
+                  className="cursor-default rounded-full border-2 border-primary/70 px-3 py-1.5 text-sm text-primary"
                 >
                   + Surrounding regions
                 </Badge>
@@ -129,18 +129,18 @@ export function ServiceAreasSection() {
           >
             <div className="relative aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 rounded-3xl bg-card border border-border overflow-hidden shadow-sm">
-                <div className="absolute inset-0 opacity-50">
+                <div className="absolute inset-0 opacity-75">
                   {[...Array(10)].map((_, i) => (
                     <div
                       key={`h-${i}`}
-                      className="absolute h-px bg-border w-full"
+                      className="absolute h-px w-full bg-border/90"
                       style={{ top: `${(i + 1) * 10}%` }}
                     />
                   ))}
                   {[...Array(10)].map((_, i) => (
                     <div
                       key={`v-${i}`}
-                      className="absolute w-px bg-border h-full"
+                      className="absolute h-full w-px bg-border/90"
                       style={{ left: `${(i + 1) * 10}%` }}
                     />
                   ))}
@@ -149,7 +149,7 @@ export function ServiceAreasSection() {
                 {/* Tasmania abstract shape */}
                 <svg
                   viewBox="0 0 100 100"
-                  className="absolute inset-0 h-full w-full text-primary/10"
+                  className="absolute inset-0 h-full w-full text-primary/25"
                   fill="currentColor"
                   aria-hidden="true"
                 >

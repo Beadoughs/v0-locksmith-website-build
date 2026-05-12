@@ -8,37 +8,25 @@ const reviews = [
     name: "Sarah W.",
     suburb: "Kings Meadows",
     rating: 5,
-    text: "Locked out of the house with two kids in the rain. Premier had someone out within 25 minutes and re-keyed our front lock on the spot. Brilliant service.",
+    text: "Locked out with kids in the rain and Premier arrived fast. They re-keyed the front door on the spot and made a stressful night easy.",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces",
   },
   {
     name: "Daniel R.",
     suburb: "Newstead",
     rating: 5,
-    text: "Had the team install security doors and a screen door for our renovation. Beautiful workmanship and the colour-match against our trim was spot on.",
+    text: "Premier installed our security and screen doors with excellent workmanship. The finish and colour match were spot on.",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=faces",
   },
   {
     name: "Linda T.",
     suburb: "Riverside",
     rating: 5,
-    text: "Used Premier for our commercial premises — master key system, restricted keys and CCTV. Professional from quote to install. Highly recommend.",
-  },
-  {
-    name: "Mark P.",
-    suburb: "Launceston CBD",
-    rating: 5,
-    text: "Lost the only key to my late father's safe. They opened it without damage and re-keyed it the same day. Couldn't be happier.",
-  },
-  {
-    name: "Emma K.",
-    suburb: "Mowbray",
-    rating: 5,
-    text: "Quick to come out for a car lockout on a Sunday. Friendly tech, fair price, no fuss. Saved my afternoon.",
-  },
-  {
-    name: "James H.",
-    suburb: "Prospect",
-    rating: 5,
-    text: "Our strata committee uses Premier for everything from key cutting to alarm servicing. Reliable people who actually return your calls.",
+    text: "For our commercial site they delivered master keying and CCTV exactly as promised. Professional, clear, and reliable from quote to install.",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&h=160&fit=crop&crop=faces",
   },
 ]
 
@@ -55,7 +43,7 @@ export function ReviewsSection() {
   return (
     <section id="reviews" className="relative py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+        <div className="mx-auto mb-12 max-w-4xl text-center md:mb-14">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,37 +52,33 @@ export function ReviewsSection() {
           >
             Reviews
           </motion.span>
-          <motion.h2
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 md:flex-row md:justify-between">
+            <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
-            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance"
-          >
-            Trusted by locals across Northern Tasmania
-          </motion.h2>
+            className="text-balance text-left text-foreground"
+            >
+              Trusted by locals across Northern Tasmania
+            </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="mt-8 inline-flex items-center gap-5 rounded-2xl border border-border bg-card p-4 md:p-5 shadow-sm"
-          >
-            <div className="text-center">
-              <p className="text-4xl font-extrabold text-foreground tabular-nums">4.9</p>
-              <div className="mt-1 flex gap-0.5 justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="inline-flex items-center gap-3 rounded-xl border-2 border-border bg-card px-4 py-2.5 shadow-sm"
+            >
+              <p className="text-xl font-black text-foreground tabular-nums">4.9</p>
+              <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                 ))}
               </div>
-            </div>
-            <div className="h-12 w-px bg-border" />
-            <div className="text-left">
-              <p className="text-sm font-semibold text-foreground">Five-star reviews</p>
-              <p className="text-xs text-muted-foreground">From local Tasmanian customers</p>
-            </div>
-          </motion.div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Trusted</p>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div
@@ -102,7 +86,7 @@ export function ReviewsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6"
         >
           {reviews.map((r) => (
             <motion.figure
@@ -110,15 +94,24 @@ export function ReviewsSection() {
               variants={item}
               className="relative flex flex-col rounded-2xl border border-border bg-card p-6 md:p-7 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all"
             >
-              <Quote className="w-8 h-8 text-primary/20" aria-hidden="true" />
-              <blockquote className="mt-3 text-foreground leading-relaxed">
-                &ldquo;{r.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 flex items-center justify-between pt-5 border-t border-border">
+              <div className="mb-3 flex items-center gap-3">
+                <img
+                  src={r.avatar}
+                  alt={r.name}
+                  className="h-11 w-11 rounded-full border-2 border-border object-cover"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
                 <div>
                   <p className="font-semibold text-foreground">{r.name}</p>
                   <p className="text-xs text-muted-foreground">{r.suburb}</p>
                 </div>
+              </div>
+              <Quote className="h-7 w-7 text-primary/20" aria-hidden="true" />
+              <blockquote className="mt-2 text-foreground leading-relaxed">
+                &ldquo;{r.text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 flex items-center justify-between pt-5 border-t border-border">
                 <div className="flex gap-0.5">
                   {[...Array(r.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-primary text-primary" />

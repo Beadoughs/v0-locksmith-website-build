@@ -32,14 +32,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-xl shadow-sm"
-          : "bg-background/40 backdrop-blur-sm"
+        "fixed inset-x-0 top-0 z-50 bg-background transition-all duration-300",
+        scrolled ? "border-b-2 border-primary shadow-lg shadow-black/10" : "border-b-2 border-border"
       )}
     >
+      <div className="h-[3px] w-full bg-primary" />
       {/* Top utility strip */}
-      <div className="hidden lg:block border-b border-border/60 bg-secondary/60">
+      <div className="hidden lg:block border-b-2 border-border/70 bg-secondary/70">
         <div className="container mx-auto px-4">
           <div className="flex h-9 items-center justify-between text-xs text-muted-foreground">
             <p>
@@ -59,10 +58,13 @@ export function Header() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" aria-label={site.name}>
-            <BrandLogo />
-          </Link>
+        <div className="flex items-center justify-between h-20 md:h-24">
+          <div className="flex items-center">
+            <Link href="/" aria-label={site.name}>
+              <BrandLogo />
+            </Link>
+            <span className="ml-4 hidden h-10 w-px bg-border md:block" aria-hidden="true" />
+          </div>
 
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
@@ -88,11 +90,11 @@ export function Header() {
             <Button
               asChild
               size="sm"
-              className="bg-primary hover:bg-primary/90 shadow-sm shadow-primary/20"
+              className="h-11 md:h-12 px-4 md:px-5 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/30"
             >
               <a href={`tel:${site.phoneTel}`} className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">{site.phone}</span>
+                <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="hidden sm:inline">Call {site.phone}</span>
               </a>
             </Button>
 

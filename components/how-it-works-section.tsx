@@ -36,14 +36,14 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative py-20 md:py-28">
+    <section id="how-it-works" className="relative bg-slab py-20 md:py-24 text-slab-foreground">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase"
+            className="inline-block rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
           >
             How it works
           </motion.span>
@@ -52,7 +52,7 @@ export function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
-            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance"
+            className="mt-4 text-balance text-slab-foreground"
           >
             Simple, transparent process
           </motion.h2>
@@ -61,7 +61,7 @@ export function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-muted-foreground"
+            className="mt-4 text-lg text-slab-foreground/75"
           >
             From the first phone call to the final walk-through — here&apos;s how we work with you.
           </motion.p>
@@ -70,7 +70,7 @@ export function HowItWorksSection() {
         <div className="relative max-w-6xl mx-auto">
           {/* Connector line on desktop */}
           <div
-            className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-border to-transparent"
+            className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[3px] border-t-2 border-dashed border-primary/70"
             aria-hidden="true"
           />
 
@@ -86,16 +86,16 @@ export function HowItWorksSection() {
               >
                 <div className="flex flex-col items-start">
                   <div className="relative">
-                    <div className="h-24 w-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center">
-                      <step.icon className="h-9 w-9 text-primary" />
+                    <div className="flex h-24 w-24 items-center justify-center rounded-2xl border-2 border-slab-foreground/20 bg-slab">
+                      <step.icon className="h-9 w-9 text-primary-foreground" />
                     </div>
-                    <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold ring-4 ring-background">
+                    <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground ring-4 ring-slab">
                       {step.number}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-lg font-bold text-foreground">{step.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="mt-6 text-lg font-bold text-slab-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slab-foreground/75">
                     {step.description}
                   </p>
                 </div>

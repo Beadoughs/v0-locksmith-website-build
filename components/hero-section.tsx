@@ -21,7 +21,7 @@ const orbitChips = [
 
 export function HeroSection() {
   return (
-    <section className="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+    <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden">
       {/* Backdrop layers */}
       <div className="absolute inset-0 -z-10 bg-brand-gradient" />
       <div className="absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
@@ -33,9 +33,9 @@ export function HeroSection() {
           {/* Copy */}
           <div className="lg:col-span-7 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.7 }}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 backdrop-blur px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm"
             >
               <span className="relative flex h-2 w-2">
@@ -46,22 +46,28 @@ export function HeroSection() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.05 }}
-              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.05] tracking-tight text-balance"
+              transition={{ duration: 0.75, delay: 0.08 }}
+              className="mt-6 text-foreground leading-[1.05] text-balance"
             >
               We keep you, your home and your business{" "}
-              <span className="relative inline-block">
+              <span className="headline-highlight relative inline-block">
                 <span className="relative z-10 text-primary">safe & secure.</span>
-                <span className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-primary/15 rounded-sm" aria-hidden="true" />
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
+                  className="absolute left-0 bottom-1 h-4 -z-0 rounded-sm bg-primary/25"
+                  aria-hidden="true"
+                />
               </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.15 }}
+              transition={{ duration: 0.75, delay: 0.16 }}
               className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-pretty"
             >
               Specialising in locksmithing, security doors, automotive keys, alarms, safes, CCTV and access control
@@ -69,9 +75,9 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.25 }}
+              transition={{ duration: 0.75, delay: 0.24 }}
               className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Button
@@ -99,18 +105,18 @@ export function HeroSection() {
 
             {/* Trust chips */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.35 }}
+              transition={{ duration: 0.75, delay: 0.3 }}
               className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 justify-center lg:justify-start text-sm"
             >
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <ShieldCheck className="w-4 h-4 text-primary" />
-                Licensed Master Locksmiths
+                <span className="border-b-2 border-primary/80 pb-0.5">Master Locksmiths</span>
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <Clock className="w-4 h-4 text-primary" />
-                Same-day response
+                <span><span className="border-b-2 border-primary/80 pb-0.5">24/7</span> same-day response</span>
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <Award className="w-4 h-4 text-primary" />
@@ -130,7 +136,7 @@ export function HeroSection() {
               {/* Card stack */}
               <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-primary/15 via-transparent to-accent/15 blur-2xl" aria-hidden="true" />
 
-              <div className="relative rounded-3xl border border-border bg-card shadow-2xl shadow-black/5 overflow-hidden">
+              <div className="relative rounded-3xl border-2 border-border/90 bg-card shadow-2xl shadow-black/15 overflow-hidden">
                 {/* Header bar */}
                 <div className="flex items-center justify-between bg-primary px-6 py-4">
                   <div className="flex items-center gap-2 text-primary-foreground/80 text-xs font-medium uppercase tracking-wider">

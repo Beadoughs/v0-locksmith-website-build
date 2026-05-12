@@ -42,7 +42,7 @@ export function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance"
+              className="mt-4 text-balance font-black"
             >
               Talk to a master locksmith today
             </motion.h2>
@@ -125,23 +125,23 @@ export function CTASection() {
                 onSubmit={(e) => e.preventDefault()}
               >
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full name</Label>
+                  <Label htmlFor="name" className="text-[11px] uppercase tracking-[0.16em]">Full name</Label>
                   <Input id="name" placeholder="John Smith" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone" className="text-[11px] uppercase tracking-[0.16em]">Phone</Label>
                   <Input id="phone" type="tel" placeholder="04xx xxx xxx" />
                 </div>
                 <div className="space-y-2 sm:col-span-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-[11px] uppercase tracking-[0.16em]">Email</Label>
                   <Input id="email" type="email" placeholder="you@email.com" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="suburb">Suburb</Label>
+                  <Label htmlFor="suburb" className="text-[11px] uppercase tracking-[0.16em]">Suburb</Label>
                   <Input id="suburb" placeholder="Launceston" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="service">Service needed</Label>
+                  <Label htmlFor="service" className="text-[11px] uppercase tracking-[0.16em]">Service needed</Label>
                   <select
                     id="service"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
@@ -159,7 +159,7 @@ export function CTASection() {
                   </select>
                 </div>
                 <div className="space-y-2 sm:col-span-2">
-                  <Label htmlFor="message">How can we help?</Label>
+                  <Label htmlFor="message" className="text-[11px] uppercase tracking-[0.16em]">How can we help?</Label>
                   <Textarea id="message" rows={4} placeholder="A few quick details about what you need…" />
                 </div>
 
@@ -167,7 +167,7 @@ export function CTASection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="bg-primary hover:bg-primary/90 text-base h-12 px-7 shadow-lg shadow-primary/20"
+                    className="h-14 bg-primary hover:bg-primary/90 text-base px-7 shadow-lg shadow-primary/20"
                   >
                     Send enquiry
                     <ArrowRight className="ml-2 h-4 w-4" />

@@ -1,18 +1,15 @@
 "use client"
 
+import { useState } from "react"
 import {
   KeyRound,
   Building2,
   Car,
   DoorClosed,
   Camera,
-  Bell,
   Lock,
-  ArrowRight,
 } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import { AnimatePresence, motion } from "framer-motion"
 
 const services = [
   {
@@ -71,29 +68,18 @@ const services = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-}
-
 export function ServicesSection() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
+
   return (
-    <section id="services" className="relative py-20 md:py-28">
+    <section id="services" className="relative bg-slab py-16 md:py-20 text-slab-foreground">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+        <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase"
+            className="inline-block rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground"
           >
             What we do
           </motion.span>
@@ -102,94 +88,57 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
-            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance"
+            className="mt-4 text-balance text-slab-foreground"
           >
             One trusted team, total security
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-muted-foreground"
-          >
-            From a jammed lock at midnight to a full commercial fit-out — Premier delivers locksmithing,
-            doors and electronic security under one roof.
-          </motion.p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-        >
-          {services.map((service) => (
-            <motion.article
-              key={service.title}
-              variants={itemVariants}
-              className="group relative flex flex-col rounded-2xl bg-card border border-border p-6 md:p-7 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
-            >
-              <div className="mb-5 h-36 w-full overflow-hidden rounded-xl border border-border/60">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div
-                className={`relative inline-flex h-12 w-12 items-center justify-center rounded-xl ${
-                  service.accent === "primary"
-                    ? "bg-primary/10 text-primary"
-                    : "bg-accent/10 text-accent"
-                }`}
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+          {services.map((service, index) => {
+            const isExpanded = expandedIndex === index
+            return (
+              <motion.article
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.04, duration: 0.35 }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                onMouseEnter={() => setExpandedIndex(index)}
+                className="cursor-pointer rounded-2xl border-2 border-primary/50 bg-slab px-4 py-4 text-slab-foreground shadow-lg shadow-black/20 transition-colors hover:border-primary"
               >
-                <service.icon className="h-6 w-6" />
-              </div>
+                <div className="flex items-center gap-3 border-b border-slab-foreground/15 pb-3">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/20 text-primary-foreground">
+                    <service.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-sm font-bold md:text-base">{service.title}</h3>
+                </div>
 
-              <h3 className="mt-5 text-lg font-bold text-foreground">{service.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-
-              <ul className="mt-5 grid grid-cols-1 gap-2">
-                {service.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-foreground/80">
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full ${
-                        service.accent === "primary" ? "bg-primary" : "bg-accent"
-                      }`}
-                    />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 pt-5 border-t border-border">
-                <Button
-                  asChild
-                  variant="ghost"
-                  className="h-auto p-0 text-sm font-semibold text-foreground hover:text-primary hover:bg-transparent"
-                >
-                  <Link href="#contact" className="inline-flex items-center gap-1.5">
-                    Enquire about this service
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-muted-foreground">
-          <Bell className="w-4 h-4 text-primary" />
-          Not sure what you need? Call us and we&apos;ll guide you through the right option.
-          <Button asChild variant="link" className="text-primary p-0 h-auto">
-            <Link href="#contact">Get advice →</Link>
-          </Button>
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pt-3 text-sm text-slab-foreground/80">{service.description}</p>
+                      <ul className="mt-3 space-y-1.5">
+                        {service.features.map((f) => (
+                          <li key={f} className="flex items-center gap-2 text-xs text-slab-foreground/85">
+                            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.article>
+            )
+          })}
         </div>
       </div>
     </section>

@@ -28,6 +28,8 @@
   /* Brand blue — matches Premier "Contact Us Now" button */
   --accent: oklch(0.52 0.2 258);
   --accent-foreground: oklch(1 0 0);
+  --slab: oklch(0.18 0.02 250);
+  --slab-foreground: oklch(0.97 0.01 250);
 
   --destructive: oklch(0.62 0.24 27);
   --destructive-foreground: oklch(1 0 0);
@@ -73,6 +75,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-slab: var(--slab);
+  --color-slab-foreground: var(--slab-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -111,9 +115,23 @@
   h1, h2, h3, h4 {
     letter-spacing: -0.02em;
   }
+  h1,
+  h2 {
+    letter-spacing: -0.03em;
+    font-weight: 900;
+  }
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
 }
 
 @layer utilities {
+  .border-bold {
+    border-width: 2px;
+  }
   .bg-grid {
     background-image:
       linear-gradient(to right, oklch(0.92 0.005 250 / 0.6) 1px, transparent 1px),
@@ -127,5 +145,33 @@
   }
   .text-shadow-sm {
     text-shadow: 0 1px 2px oklch(0 0 0 / 0.2);
+  }
+  .headline-highlight {
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+  }
+  .headline-highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.08em;
+    height: 0.28em;
+    width: 100%;
+    background: oklch(from var(--primary) l c h / 0.3);
+    border-radius: 0.125rem;
+    z-index: -1;
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }

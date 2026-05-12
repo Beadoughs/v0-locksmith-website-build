@@ -31,21 +31,21 @@ const areas = [
 
 export function Footer() {
   return (
-    <footer className="bg-secondary/40 border-t border-border">
+    <footer className="border-t-2 border-accent/60 bg-slab text-slab-foreground">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-4">
             <Link href="/" aria-label={site.name}>
               <BrandLogo />
             </Link>
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slab-foreground/70">
               {site.description}
             </p>
 
             <div className="mt-6 space-y-3">
               <a
                 href={`tel:${site.phoneTel}`}
-                className="group flex items-center gap-3 text-foreground hover:text-primary transition-colors"
+                className="group flex items-center gap-3 text-slab-foreground hover:text-primary-foreground transition-colors"
               >
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Phone className="h-4 w-4" />
@@ -54,14 +54,14 @@ export function Footer() {
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-3 text-foreground/90 hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-slab-foreground/90 hover:text-primary-foreground transition-colors"
               >
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Mail className="h-4 w-4" />
                 </span>
                 <span className="text-sm">{site.email}</span>
               </a>
-              <div className="flex items-start gap-3 text-muted-foreground">
+              <div className="flex items-start gap-3 text-slab-foreground/70">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary mt-0.5">
                   <MapPin className="h-4 w-4" />
                 </span>
@@ -71,7 +71,7 @@ export function Footer() {
                   {site.address.suburb} {site.address.state} {site.address.postcode}
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
+              <div className="flex items-center gap-3 text-slab-foreground/70">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Clock className="h-4 w-4" />
                 </span>
@@ -81,7 +81,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-slab-foreground uppercase tracking-wider">
               Services
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -89,7 +89,7 @@ export function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-slab-foreground/70 hover:text-primary-foreground transition-colors"
                   >
                     {s.label}
                   </Link>
@@ -99,7 +99,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-slab-foreground uppercase tracking-wider">
               Company
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -107,7 +107,7 @@ export function Footer() {
                 <li key={c.label}>
                   <Link
                     href={c.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-slab-foreground/70 hover:text-primary-foreground transition-colors"
                   >
                     {c.label}
                   </Link>
@@ -117,12 +117,12 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-slab-foreground uppercase tracking-wider">
               Service Areas
             </h3>
             <ul className="mt-4 grid grid-cols-2 gap-y-2.5 gap-x-4">
               {areas.map((a) => (
-                <li key={a} className="text-sm text-muted-foreground">{a}</li>
+                <li key={a} className="text-sm text-slab-foreground/70">{a}</li>
               ))}
               <li>
                 <Link
@@ -134,20 +134,20 @@ export function Footer() {
               </li>
             </ul>
 
-            <div className="mt-6 rounded-2xl border border-border bg-background p-4">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+            <div className="mt-6 rounded-2xl border border-slab-foreground/20 bg-slab-foreground/5 p-4">
+              <p className="text-xs uppercase tracking-wider text-slab-foreground/70 font-semibold">
                 Established
               </p>
-              <p className="mt-1 text-lg font-bold text-foreground">{site.established}</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
+              <p className="mt-1 text-lg font-bold text-slab-foreground">{site.established}</p>
+              <p className="mt-0.5 text-xs text-slab-foreground/70">
                 Servicing {site.region} for over {new Date().getFullYear() - site.established} years
               </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground text-center md:text-left">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slab-foreground/20 pt-8 md:flex-row">
+          <p className="text-center text-sm text-slab-foreground/70 md:text-left">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
 
@@ -161,7 +161,7 @@ export function Footer() {
                 key={s.label}
                 href={s.href}
                 aria-label={s.label}
-                className="h-9 w-9 rounded-lg bg-background border border-border inline-flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slab-foreground/20 bg-slab-foreground/5 text-slab-foreground/70 transition-colors hover:border-primary/60 hover:text-primary-foreground"
               >
                 <s.icon className="h-4 w-4" />
               </a>

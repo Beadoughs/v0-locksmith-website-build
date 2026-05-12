@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, ArrowRight, ShieldCheck, Clock, Award, KeyRound, DoorClosed, Camera } from "lucide-react"
+import { Phone, ArrowRight, ShieldCheck, Clock, Award, KeyRound } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -9,39 +9,22 @@ import { site } from "@/lib/site"
 const stats = [
   { value: "50+", label: "Years serving Tasmania" },
   { value: "24/7", label: "Emergency callout" },
-  { value: "1000s", label: "Locks & doors secured" },
-]
-
-const orbitChips = [
-  { icon: KeyRound, label: "Lockouts" },
-  { icon: DoorClosed, label: "Security Doors" },
-  { icon: Camera, label: "CCTV" },
-  { icon: ShieldCheck, label: "Alarms" },
+  { value: "Licensed", label: "Master Locksmiths" },
 ]
 
 export function HeroSection() {
   return (
-    <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden">
-      {/* Backdrop layers */}
-      <div className="absolute inset-0 -z-10 bg-brand-gradient" />
-      <div className="absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      <div className="absolute -top-32 -right-20 -z-10 h-[480px] w-[480px] rounded-full bg-primary/10 blur-3xl" />
-      <div className="absolute -bottom-32 -left-20 -z-10 h-[420px] w-[420px] rounded-full bg-accent/10 blur-3xl" />
-
+    <section className="relative overflow-hidden pt-28 pb-14 md:pt-36 md:pb-20">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          {/* Copy */}
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 backdrop-blur px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-foreground bg-background px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
+              <KeyRound className="h-3.5 w-3.5 text-primary" />
               24/7 Emergency Locksmith · Launceston & Northern Tasmania
             </motion.div>
 
@@ -52,15 +35,8 @@ export function HeroSection() {
               className="mt-6 text-foreground leading-[1.05] text-balance"
             >
               We keep you, your home and your business{" "}
-              <span className="headline-highlight relative inline-block">
-                <span className="relative z-10 text-primary">safe & secure.</span>
-                <motion.span
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
-                  className="absolute left-0 bottom-1 h-4 -z-0 rounded-sm bg-primary/25"
-                  aria-hidden="true"
-                />
+              <span className="headline-highlight">
+                <span className="text-emphasis-red">safe & secure</span>
               </span>
             </motion.h1>
 
@@ -68,10 +44,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.16 }}
-              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-pretty"
+              className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg lg:mx-0"
             >
-              Specialising in locksmithing, security doors, automotive keys, alarms, safes, CCTV and access control
-              for residential, strata and commercial customers across Northern Tasmania.
+              Specialising in locksmithing, security doors, automotive keys, alarms, safes and CCTV across
+              Northern Tasmania.
             </motion.p>
 
             <motion.div
@@ -94,7 +70,7 @@ export function HeroSection() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-base px-7 h-12 border-border hover:border-primary hover:text-primary"
+                className="h-12 border-foreground px-7 text-base hover:bg-secondary"
               >
                 <Link href="#contact" className="flex items-center gap-2">
                   Request a Quote
@@ -103,7 +79,6 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
-            {/* Trust chips */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,11 +87,11 @@ export function HeroSection() {
             >
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <ShieldCheck className="w-4 h-4 text-primary" />
-                <span className="border-b-2 border-primary/80 pb-0.5">Master Locksmiths</span>
+                Licensed Master Locksmiths
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <Clock className="w-4 h-4 text-primary" />
-                <span><span className="border-b-2 border-primary/80 pb-0.5">24/7</span> same-day response</span>
+                24/7 same-day response
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <Award className="w-4 h-4 text-primary" />
@@ -125,120 +100,31 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative mx-auto max-w-md">
-              {/* Card stack */}
-              <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-primary/15 via-transparent to-accent/15 blur-2xl" aria-hidden="true" />
-
-              <div className="relative rounded-3xl border-2 border-border/90 bg-card shadow-2xl shadow-black/15 overflow-hidden">
-                {/* Header bar */}
-                <div className="flex items-center justify-between bg-primary px-6 py-4">
-                  <div className="flex items-center gap-2 text-primary-foreground/80 text-xs font-medium uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4" />
-                    Premier Security
-                  </div>
-                  <div className="flex gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground/30" />
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground/30" />
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground/60" />
-                  </div>
-                </div>
-
-                <div
-                  className="h-40 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.2)), url('https://www.pwls.com.au/wp-content/uploads/2021/03/Commercial-Locksmith.jpg')",
-                  }}
-                  aria-hidden="true"
-                />
-
-                <div className="p-6 md:p-7">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Average Response
-                  </p>
-                  <div className="mt-2 flex items-baseline gap-2">
-                    <span className="text-5xl font-extrabold text-foreground tabular-nums">30</span>
-                    <span className="text-2xl font-semibold text-muted-foreground">min</span>
-                  </div>
-                  <div className="mt-4 h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "78%" }}
-                      transition={{ delay: 0.8, duration: 1.1, ease: "easeOut" }}
-                      className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-                    />
-                  </div>
-
-                  <div className="mt-6 grid grid-cols-2 gap-3">
-                    {stats.map((s) => (
-                      <div
-                        key={s.label}
-                        className="rounded-xl bg-secondary border border-border/70 p-3"
-                      >
-                        <p className="text-xl font-bold text-foreground">{s.value}</p>
-                        <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
-                          {s.label}
-                        </p>
-                      </div>
-                    ))}
-                    <div className="rounded-xl bg-accent/10 border border-accent/20 p-3">
-                      <p className="text-xl font-bold text-accent">A+</p>
-                      <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
-                        Licensed & insured
-                      </p>
+            <div className="relative mx-auto max-w-md rounded-xl border border-foreground bg-card shadow-lg">
+              <img
+                src="https://www.pwls.com.au/wp-content/uploads/2021/03/Commercial-Locksmith.jpg"
+                alt="Premier locksmith technician working on-site"
+                className="h-60 w-full rounded-t-xl object-cover"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+              <div className="p-4 md:p-5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Why clients call us</p>
+                <div className="mt-3 grid grid-cols-3 gap-2">
+                  {stats.map((s) => (
+                    <div key={s.label} className="rounded-xl border border-border bg-secondary/40 p-2.5">
+                      <p className="text-sm font-bold text-foreground">{s.value}</p>
+                      <p className="mt-0.5 text-[11px] leading-tight text-muted-foreground">{s.label}</p>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-
-              {/* Floating chips around card */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
-                className="absolute -top-4 -left-6 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
-              >
-                <KeyRound className="w-3.5 h-3.5 text-primary" />
-                Lockouts
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="absolute -bottom-3 -right-4 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
-              >
-                <Camera className="w-3.5 h-3.5 text-accent" />
-                CCTV Installed
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.1 }}
-                className="absolute top-1/2 -right-8 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
-              >
-                <DoorClosed className="w-3.5 h-3.5 text-primary" />
-                Security Doors
-              </motion.div>
-            </div>
-
-            {/* Mobile chip row */}
-            <div className="mt-6 flex md:hidden flex-wrap justify-center gap-2">
-              {orbitChips.map((c) => (
-                <span
-                  key={c.label}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-background border border-border px-3 py-1.5 text-xs font-medium"
-                >
-                  <c.icon className="w-3.5 h-3.5 text-primary" />
-                  {c.label}
-                </span>
-              ))}
             </div>
           </motion.div>
         </div>

@@ -32,7 +32,7 @@ const reviews = [
 
 const container = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
 }
 const item = {
   hidden: { opacity: 0, y: 18 },
@@ -41,9 +41,9 @@ const item = {
 
 export function ReviewsSection() {
   return (
-    <section id="reviews" className="relative py-20 md:py-28">
+    <section id="reviews" className="section-rhythm bg-background">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-12 max-w-4xl text-center md:mb-14">
+        <div className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export function ReviewsSection() {
           >
             Reviews
           </motion.span>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 md:flex-row md:justify-between">
+          <div className="mt-3 flex flex-col items-center justify-center gap-3 md:flex-row md:justify-between">
             <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,9 +68,9 @@ export function ReviewsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="inline-flex items-center gap-3 rounded-xl border-2 border-border bg-card px-4 py-2.5 shadow-sm"
+              className="inline-flex items-center gap-3 rounded-xl border border-foreground bg-card px-4 py-2.5 shadow-sm"
             >
-              <p className="text-xl font-black text-foreground tabular-nums">4.9</p>
+              <p className="text-xl font-bold text-foreground tabular-nums">4.9</p>
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-primary text-primary" />
@@ -86,19 +86,19 @@ export function ReviewsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6"
+          className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
         >
           {reviews.map((r) => (
             <motion.figure
               key={r.name}
               variants={item}
-              className="relative flex flex-col rounded-2xl border border-border bg-card p-6 md:p-7 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all"
+              className="relative flex flex-col rounded-xl border border-foreground bg-card p-5 transition-all"
             >
               <div className="mb-3 flex items-center gap-3">
                 <img
                   src={r.avatar}
                   alt={r.name}
-                  className="h-11 w-11 rounded-full border-2 border-border object-cover"
+                  className="h-11 w-11 rounded-full border border-border object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
@@ -107,11 +107,11 @@ export function ReviewsSection() {
                   <p className="text-xs text-muted-foreground">{r.suburb}</p>
                 </div>
               </div>
-              <Quote className="h-7 w-7 text-primary/20" aria-hidden="true" />
-              <blockquote className="mt-2 text-foreground leading-relaxed">
+              <Quote className="h-6 w-6 text-primary/25" aria-hidden="true" />
+              <blockquote className="mt-2 text-sm leading-relaxed text-foreground">
                 &ldquo;{r.text}&rdquo;
               </blockquote>
-              <figcaption className="mt-6 flex items-center justify-between pt-5 border-t border-border">
+              <figcaption className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <div className="flex gap-0.5">
                   {[...Array(r.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-primary text-primary" />

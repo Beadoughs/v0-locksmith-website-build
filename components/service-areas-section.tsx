@@ -59,9 +59,9 @@ const pins = [
 
 export function ServiceAreasSection() {
   return (
-    <section id="areas" className="relative py-20 md:py-28 bg-secondary/40 border-y border-border/60">
+    <section id="areas" className="section-rhythm relative border-y border-border/60 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
             <motion.span
               initial={{ opacity: 0, y: 16 }}
@@ -80,13 +80,7 @@ export function ServiceAreasSection() {
             >
               Covering all of Northern Tasmania
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mt-4 text-lg text-muted-foreground"
-            >
+            <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mt-2 text-sm text-muted-foreground">
               Based in South Launceston, our mobile teams cover greater Launceston and the surrounding
               Northern Tasmania region — from the Tamar Valley to the East Coast.
             </motion.p>
@@ -96,13 +90,13 @@ export function ServiceAreasSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-8 flex flex-wrap gap-2"
+              className="mt-6 flex flex-wrap gap-2"
             >
               {suburbs.map((s) => (
                 <motion.div key={s} variants={item}>
                 <Badge
                     variant="secondary"
-                  className="cursor-default rounded-full border-2 border-border bg-background px-3 py-1.5 text-sm font-medium transition-colors hover:bg-primary/10 hover:text-primary"
+                  className="cursor-default rounded-full border border-foreground bg-background px-3 py-1.5 text-sm font-medium transition-colors hover:text-primary"
                   >
                     {s}
                   </Badge>
@@ -111,7 +105,7 @@ export function ServiceAreasSection() {
               <motion.div variants={item}>
                 <Badge
                   variant="outline"
-                  className="cursor-default rounded-full border-2 border-primary/70 px-3 py-1.5 text-sm text-primary"
+                  className="cursor-default rounded-full border border-foreground px-3 py-1.5 text-sm text-foreground transition-colors hover:text-primary"
                 >
                   + Surrounding regions
                 </Badge>
@@ -128,19 +122,19 @@ export function ServiceAreasSection() {
             className="relative"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 rounded-3xl bg-card border border-border overflow-hidden shadow-sm">
+              <div className="absolute inset-0 overflow-hidden rounded-xl border border-foreground bg-card shadow-sm">
                 <div className="absolute inset-0 opacity-75">
                   {[...Array(10)].map((_, i) => (
                     <div
                       key={`h-${i}`}
-                      className="absolute h-px w-full bg-border/90"
+                      className="absolute h-px w-full bg-foreground/15"
                       style={{ top: `${(i + 1) * 10}%` }}
                     />
                   ))}
                   {[...Array(10)].map((_, i) => (
                     <div
                       key={`v-${i}`}
-                      className="absolute h-full w-px bg-border/90"
+                      className="absolute h-full w-px bg-foreground/15"
                       style={{ left: `${(i + 1) * 10}%` }}
                     />
                   ))}
@@ -149,7 +143,7 @@ export function ServiceAreasSection() {
                 {/* Tasmania abstract shape */}
                 <svg
                   viewBox="0 0 100 100"
-                  className="absolute inset-0 h-full w-full text-primary/25"
+                  className="absolute inset-0 h-full w-full text-foreground/15"
                   fill="currentColor"
                   aria-hidden="true"
                 >
@@ -160,13 +154,13 @@ export function ServiceAreasSection() {
                 <div className="absolute" style={{ top: "44%", left: "48%" }}>
                   <div className="relative -translate-x-1/2 -translate-y-1/2">
                     <div className="h-3.5 w-3.5 rounded-full bg-primary" />
-                    <div className="absolute inset-0 h-3.5 w-3.5 rounded-full bg-primary/40 animate-ping" />
+                    <div className="absolute inset-0 h-3.5 w-3.5 rounded-full bg-foreground/30 animate-ping" />
                   </div>
                 </div>
 
                 {/* Coverage ring */}
                 <div
-                  className="absolute h-3/5 w-3/5 rounded-full border-2 border-dashed border-primary/40"
+                  className="absolute h-3/5 w-3/5 rounded-full border border-dashed border-foreground/30"
                   style={{ top: "44%", left: "48%", transform: "translate(-50%, -50%)" }}
                 />
 
@@ -178,7 +172,7 @@ export function ServiceAreasSection() {
                     style={{ top: p.top, left: p.left }}
                   >
                     <div className="-translate-x-1/2 -translate-y-1/2">
-                      <div className="h-2 w-2 rounded-full bg-accent" />
+                      <div className="h-2 w-2 rounded-full bg-foreground/70" />
                     </div>
                   </div>
                 ))}
@@ -189,7 +183,7 @@ export function ServiceAreasSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-3 rounded-2xl bg-background border border-border px-4 py-3 shadow-xl"
+                className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-xl border border-foreground bg-background px-4 py-3 shadow-lg"
               >
                 <div className="h-10 w-10 rounded-full bg-primary/10 inline-flex items-center justify-center">
                   <MapPin className="h-5 w-5 text-primary" />

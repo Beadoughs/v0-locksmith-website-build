@@ -15,21 +15,13 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <div className="h-[3px] bg-primary" />
       <LogosMarquee />
-      <div className="h-[2px] bg-accent" />
       <ServicesSection />
-      <div className="h-[3px] bg-primary" />
       <WhyUsSection />
-      <div className="h-[2px] bg-accent" />
       <ReviewsSection />
-      <div className="h-[3px] bg-primary" />
       <HowItWorksSection />
-      <div className="h-[2px] bg-accent" />
       <ServiceAreasSection />
-      <div className="h-[3px] bg-primary" />
       <CTASection />
-      <div className="h-[2px] bg-accent" />
       <Footer />
       <MobileCTA />
     </main>

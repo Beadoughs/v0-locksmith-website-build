@@ -36,14 +36,14 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative bg-slab py-20 md:py-24 text-slab-foreground">
+    <section id="how-it-works" className="section-rhythm bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+        <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
+            className="inline-block rounded-full border border-foreground bg-secondary/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-foreground"
           >
             How it works
           </motion.span>
@@ -52,7 +52,7 @@ export function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
-            className="mt-4 text-balance text-slab-foreground"
+            className="mt-3 text-balance text-foreground"
           >
             Simple, transparent process
           </motion.h2>
@@ -61,7 +61,7 @@ export function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-slab-foreground/75"
+            className="mt-2 text-sm text-muted-foreground"
           >
             From the first phone call to the final walk-through — here&apos;s how we work with you.
           </motion.p>
@@ -70,32 +70,32 @@ export function HowItWorksSection() {
         <div className="relative max-w-6xl mx-auto">
           {/* Connector line on desktop */}
           <div
-            className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[3px] border-t-2 border-dashed border-primary/70"
+            className="absolute left-[10%] right-[10%] top-12 hidden h-px border-t border-dashed border-foreground/40 lg:block"
             aria-hidden="true"
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+          <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {steps.map((step, i) => (
               <motion.div
                 key={step.title}
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.45 }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="relative"
               >
                 <div className="flex flex-col items-start">
                   <div className="relative">
-                    <div className="flex h-24 w-24 items-center justify-center rounded-2xl border-2 border-slab-foreground/20 bg-slab">
-                      <step.icon className="h-9 w-9 text-primary-foreground" />
+                    <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-secondary/40">
+                      <step.icon className="h-8 w-8 text-foreground" />
                     </div>
-                    <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground ring-4 ring-slab">
+                    <span className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                       {step.number}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-lg font-bold text-slab-foreground">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slab-foreground/75">
+                  <h3 className="mt-4 text-lg font-bold text-foreground">{step.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {step.description}
                   </p>
                 </div>

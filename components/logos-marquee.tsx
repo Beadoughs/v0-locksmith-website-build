@@ -2,46 +2,46 @@
 
 import { motion } from "framer-motion"
 
+// TODO: replace with real partner logo files from public/partners/ once supplied.
 const logos = [
-  { name: "Harcourts", className: "font-serif italic tracking-wide text-2xl" },
-  { name: "Ray White", className: "font-black uppercase tracking-[0.08em] text-lg" },
-  { name: "Housing Tasmania", className: "font-semibold tracking-wide text-xl" },
-  { name: "Tasmanian Government", className: "font-bold uppercase text-base tracking-[0.12em]" },
-  { name: "First National", className: "font-serif font-semibold text-xl" },
-  { name: "LJ Hooker", className: "font-extrabold uppercase text-lg tracking-[0.06em]" },
-  { name: "Roberts Real Estate", className: "font-medium italic text-lg" },
-  { name: "Hodgman Property Developers", className: "font-bold text-base tracking-wide" },
-  { name: "Strata Tasmania", className: "font-black text-lg" },
-  { name: "Northern Tasmania Council", className: "font-semibold uppercase text-sm tracking-[0.08em]" },
+  { name: "Harcourts" },
+  { name: "Ray White" },
+  { name: "Housing Tasmania" },
+  { name: "Tasmanian Government" },
+  { name: "First National" },
+  { name: "LJ Hooker" },
+  { name: "Roberts Real Estate" },
+  { name: "Hodgman Property Developers" },
+  { name: "Strata Tasmania" },
+  { name: "Northern Tasmania Council" },
 ]
 
 const looped = [...logos, ...logos]
 
 export function LogosMarquee() {
   return (
-    <section className="bg-slab text-slab-foreground border-y-[3px] border-primary">
-      <div className="container mx-auto px-4 py-16 md:py-20">
+    <section className="border-y border-foreground bg-background">
+      <div className="container mx-auto px-4 py-8 md:py-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-slab-foreground/70">Working with</p>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-balance">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Working with</p>
+          <h2 className="mt-2 text-xl font-bold text-foreground md:text-2xl">
             Trusted by Tasmania&apos;s leading agencies &amp; organisations
           </h2>
         </motion.div>
 
-        <div className="mt-10 overflow-hidden border-y-2 border-slab-foreground/20 py-5">
-          {/* TODO: replace with real partner logos */}
+        <div className="mt-6 overflow-hidden py-2">
           <div className="flex min-w-max items-center gap-4 animate-marquee">
             {looped.map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="rounded-xl border-2 border-slab-foreground/30 bg-slab-foreground/5 px-6 py-3 text-slab-foreground"
+                className="flex h-12 w-44 items-center justify-center rounded-lg border border-foreground px-4"
               >
-                <span className={logo.className}>{logo.name}</span>
+                <span className="text-center text-sm font-medium text-neutral-700">{logo.name}</span>
               </div>
             ))}
           </div>

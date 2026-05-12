@@ -32,15 +32,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-background transition-all duration-300",
-        scrolled ? "border-b-2 border-primary shadow-lg shadow-black/10" : "border-b-2 border-border"
+        "fixed inset-x-0 top-0 z-50 bg-background transition-all duration-300 border-b border-foreground",
+        scrolled ? "shadow-md shadow-black/10" : "shadow-none"
       )}
     >
-      <div className="h-[3px] w-full bg-primary" />
-      {/* Top utility strip */}
-      <div className="hidden lg:block border-b-2 border-border/70 bg-secondary/70">
+      <div className="hidden lg:block border-b border-border bg-secondary/40">
         <div className="container mx-auto px-4">
-          <div className="flex h-9 items-center justify-between text-xs text-muted-foreground">
+          <div className="flex h-8 items-center justify-between text-xs text-muted-foreground">
             <p>
               Servicing <span className="font-medium text-foreground">Northern Tasmania</span> since {site.established}
               <span className="mx-2 text-border">·</span>
@@ -58,12 +56,12 @@ export function Header() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
             <Link href="/" aria-label={site.name}>
               <BrandLogo />
             </Link>
-            <span className="ml-4 hidden h-10 w-px bg-border md:block" aria-hidden="true" />
+            <span className="ml-4 hidden h-10 w-px bg-foreground md:block" aria-hidden="true" />
           </div>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -83,7 +81,7 @@ export function Header() {
               asChild
               variant="outline"
               size="sm"
-              className="hidden md:inline-flex border-border hover:border-primary hover:text-primary"
+              className="hidden md:inline-flex border-foreground hover:bg-secondary"
             >
               <Link href="#contact">Get a Quote</Link>
             </Button>

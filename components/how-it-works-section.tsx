@@ -1,104 +1,104 @@
 "use client"
 
-import { Phone, Truck, CheckCircle } from "lucide-react"
+import { PhoneCall, ClipboardCheck, Truck, ShieldCheck } from "lucide-react"
 import { motion } from "framer-motion"
 
 const steps = [
   {
-    icon: Phone,
+    icon: PhoneCall,
     number: "01",
-    title: "Call Us",
-    description: "Give us a call 24/7 and describe your situation. We&apos;ll provide an upfront quote immediately.",
+    title: "Get in touch",
+    description:
+      "Call us or send an enquiry. We'll listen, ask the right questions and give honest advice.",
+  },
+  {
+    icon: ClipboardCheck,
+    number: "02",
+    title: "Free quote & plan",
+    description:
+      "Site visit if needed, then a clear written quote with options — no surprises, no pressure.",
   },
   {
     icon: Truck,
-    number: "02",
-    title: "We Dispatch a Technician",
-    description: "Our nearest mobile locksmith will be on their way within minutes, fully equipped to solve your problem.",
+    number: "03",
+    title: "On-site service",
+    description:
+      "Our mobile workshop arrives equipped with parts, tools and the team to get the job done.",
   },
   {
-    icon: CheckCircle,
-    number: "03",
-    title: "Problem Solved Fast",
-    description: "Our professional technician resolves your issue quickly and efficiently. You&apos;re back in business.",
+    icon: ShieldCheck,
+    number: "04",
+    title: "Done right",
+    description:
+      "We test everything, walk you through it and back our workmanship with a real guarantee.",
   },
 ]
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-20 md:py-28 bg-secondary/30">
+    <section id="how-it-works" className="relative py-20 md:py-28">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+            className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase"
           >
-            How It Works
+            How it works
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance"
+          >
+            Simple, transparent process
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance"
-          >
-            Fast & Simple Process
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
             className="mt-4 text-lg text-muted-foreground"
           >
-            Getting help is easy. Here&apos;s how we get you back on track.
+            From the first phone call to the final walk-through — here&apos;s how we work with you.
           </motion.p>
         </div>
 
-        {/* Steps */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2 z-0" />
-          
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 relative z-10">
-            {steps.map((step, index) => (
+        <div className="relative max-w-6xl mx-auto">
+          {/* Connector line on desktop */}
+          <div
+            className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-border to-transparent"
+            aria-hidden="true"
+          />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+            {steps.map((step, i) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
+                transition={{ delay: i * 0.1, duration: 0.45 }}
                 className="relative"
               >
-                <div className="flex flex-col items-center text-center">
-                  {/* Number Badge */}
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 rounded-full bg-card border-2 border-primary flex items-center justify-center">
-                      <step.icon className="w-8 h-8 text-primary" />
+                <div className="flex flex-col items-start">
+                  <div className="relative">
+                    <div className="h-24 w-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center">
+                      <step.icon className="h-9 w-9 text-primary" />
                     </div>
-                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                    <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold ring-4 ring-background">
                       {step.number}
                     </span>
                   </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-foreground mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground max-w-xs">
+                  <h3 className="mt-6 text-lg font-bold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
                 </div>
-
-                {/* Mobile Arrow */}
-                {index < steps.length - 1 && (
-                  <div className="lg:hidden flex justify-center my-6">
-                    <div className="w-0.5 h-8 bg-border" />
-                  </div>
-                )}
               </motion.div>
             ))}
           </div>

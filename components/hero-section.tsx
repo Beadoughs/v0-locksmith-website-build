@@ -1,172 +1,238 @@
 "use client"
 
-import { Phone, MessageSquare, Shield, Clock, Zap, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { Phone, ArrowRight, ShieldCheck, Clock, Award, KeyRound, DoorClosed, Camera } from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { site } from "@/lib/site"
 
-const trustBadges = [
-  { icon: Shield, label: "Licensed & Insured" },
-  { icon: Clock, label: "24/7 Emergency Service" },
-  { icon: Zap, label: "Fast Response Times" },
-  { icon: Star, label: "300+ 5-Star Reviews" },
+const stats = [
+  { value: "50+", label: "Years serving Tasmania" },
+  { value: "24/7", label: "Emergency callout" },
+  { value: "1000s", label: "Locks & doors secured" },
+]
+
+const orbitChips = [
+  { icon: KeyRound, label: "Lockouts" },
+  { icon: DoorClosed, label: "Security Doors" },
+  { icon: Camera, label: "CCTV" },
+  { icon: ShieldCheck, label: "Alarms" },
 ]
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-12 md:pt-24 md:pb-20 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/30" />
-      
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-      }} />
+    <section className="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+      {/* Backdrop layers */}
+      <div className="absolute inset-0 -z-10 bg-brand-gradient" />
+      <div className="absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      <div className="absolute -top-32 -right-20 -z-10 h-[480px] w-[480px] rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -bottom-32 -left-20 -z-10 h-[420px] w-[420px] rounded-full bg-accent/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div className="text-center lg:text-left">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          {/* Copy */}
+          <div className="lg:col-span-7 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 backdrop-blur px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm"
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-                Melbourne&apos;s Trusted Emergency Locksmiths
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
+              24/7 Emergency Locksmith · Launceston & Northern Tasmania
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance"
+              transition={{ duration: 0.55, delay: 0.05 }}
+              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.05] tracking-tight text-balance"
             >
-              24/7 Emergency{" "}
-              <span className="text-primary">Locksmith</span>{" "}
-              Services
+              We keep you, your home and your business{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-primary">safe & secure.</span>
+                <span className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-primary/15 rounded-sm" aria-hidden="true" />
+              </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 text-pretty"
+              transition={{ duration: 0.55, delay: 0.15 }}
+              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-pretty"
             >
-              Locked out? Need locks changed fast? Our mobile locksmiths respond quickly across Melbourne with upfront pricing and professional service.
+              Specialising in locksmithing, security doors, automotive keys, alarms, safes, CCTV and access control
+              for residential, strata and commercial customers across Northern Tasmania.
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              transition={{ duration: 0.55, delay: 0.25 }}
+              className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
+                className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-base px-7 h-12"
               >
-                <a href="tel:1300000000" className="flex items-center gap-2">
+                <a href={`tel:${site.phoneTel}`} className="flex items-center gap-2">
                   <Phone className="w-5 h-5" />
-                  Call Now
+                  Call {site.phone}
                 </a>
               </Button>
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="text-lg px-8 py-6 border-border hover:bg-secondary"
+                variant="outline"
+                className="text-base px-7 h-12 border-border hover:border-primary hover:text-primary"
               >
-                <Link href="#quote" className="flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5" />
-                  Get Fast Quote
+                <Link href="#contact" className="flex items-center gap-2">
+                  Request a Quote
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Trust Badges */}
+            {/* Trust chips */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4"
+              transition={{ duration: 0.55, delay: 0.35 }}
+              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 justify-center lg:justify-start text-sm"
             >
-              {trustBadges.map((badge, index) => (
-                <motion.div
-                  key={badge.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  className="flex flex-col items-center lg:items-start gap-2 p-3 rounded-lg bg-secondary/50"
-                >
-                  <badge.icon className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium text-foreground text-center lg:text-left">
-                    {badge.label}
-                  </span>
-                </motion.div>
-              ))}
+              <span className="inline-flex items-center gap-2 text-muted-foreground">
+                <ShieldCheck className="w-4 h-4 text-primary" />
+                Licensed Master Locksmiths
+              </span>
+              <span className="inline-flex items-center gap-2 text-muted-foreground">
+                <Clock className="w-4 h-4 text-primary" />
+                Same-day response
+              </span>
+              <span className="inline-flex items-center gap-2 text-muted-foreground">
+                <Award className="w-4 h-4 text-primary" />
+                Trusted since {site.established}
+              </span>
             </motion.div>
           </div>
 
-          {/* Hero Image */}
+          {/* Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative hidden lg:block"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Decorative elements */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent" />
-              <div className="absolute -inset-4 rounded-3xl border border-primary/10" />
-              
-              {/* Image placeholder with professional locksmith imagery */}
-              <div className="relative w-full h-full rounded-2xl bg-secondary overflow-hidden flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Shield className="w-24 h-24 text-primary mx-auto mb-4" />
-                  <p className="text-lg font-semibold text-foreground">Professional Service</p>
-                  <p className="text-sm text-muted-foreground mt-1">Licensed & Insured Technicians</p>
+            <div className="relative mx-auto max-w-md">
+              {/* Card stack */}
+              <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-primary/15 via-transparent to-accent/15 blur-2xl" aria-hidden="true" />
+
+              <div className="relative rounded-3xl border border-border bg-card shadow-2xl shadow-black/5 overflow-hidden">
+                {/* Header bar */}
+                <div className="flex items-center justify-between bg-primary px-6 py-4">
+                  <div className="flex items-center gap-2 text-primary-foreground/80 text-xs font-medium uppercase tracking-wider">
+                    <ShieldCheck className="w-4 h-4" />
+                    Premier Security
+                  </div>
+                  <div className="flex gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-primary-foreground/30" />
+                    <div className="w-2 h-2 rounded-full bg-primary-foreground/30" />
+                    <div className="w-2 h-2 rounded-full bg-primary-foreground/60" />
+                  </div>
+                </div>
+
+                <div
+                  className="h-40 bg-cover bg-center"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.2)), url('https://www.pwls.com.au/wp-content/uploads/2021/03/Commercial-Locksmith.jpg')",
+                  }}
+                  aria-hidden="true"
+                />
+
+                <div className="p-6 md:p-7">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Average Response
+                  </p>
+                  <div className="mt-2 flex items-baseline gap-2">
+                    <span className="text-5xl font-extrabold text-foreground tabular-nums">30</span>
+                    <span className="text-2xl font-semibold text-muted-foreground">min</span>
+                  </div>
+                  <div className="mt-4 h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "78%" }}
+                      transition={{ delay: 0.8, duration: 1.1, ease: "easeOut" }}
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
+                    />
+                  </div>
+
+                  <div className="mt-6 grid grid-cols-2 gap-3">
+                    {stats.map((s) => (
+                      <div
+                        key={s.label}
+                        className="rounded-xl bg-secondary border border-border/70 p-3"
+                      >
+                        <p className="text-xl font-bold text-foreground">{s.value}</p>
+                        <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
+                          {s.label}
+                        </p>
+                      </div>
+                    ))}
+                    <div className="rounded-xl bg-accent/10 border border-accent/20 p-3">
+                      <p className="text-xl font-bold text-accent">A+</p>
+                      <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
+                        Licensed & insured
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Floating badge */}
+              {/* Floating chips around card */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -right-4 top-1/4 bg-card border border-border rounded-xl p-4 shadow-xl"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+                className="absolute -top-4 -left-6 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-foreground">15 min</p>
-                    <p className="text-xs text-muted-foreground">Avg Response</p>
-                  </div>
-                </div>
+                <KeyRound className="w-3.5 h-3.5 text-primary" />
+                Lockouts
               </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                className="absolute -bottom-3 -right-4 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
+              >
+                <Camera className="w-3.5 h-3.5 text-accent" />
+                CCTV Installed
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.1 }}
+                className="absolute top-1/2 -right-8 hidden md:flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5 shadow-md text-xs font-medium"
+              >
+                <DoorClosed className="w-3.5 h-3.5 text-primary" />
+                Security Doors
+              </motion.div>
+            </div>
 
-              {/* Another floating badge */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                className="absolute -left-4 bottom-1/4 bg-card border border-border rounded-xl p-4 shadow-xl"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Star className="w-5 h-5 text-primary fill-primary" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-foreground">4.9★</p>
-                    <p className="text-xs text-muted-foreground">Customer Rating</p>
-                  </div>
-                </div>
-              </motion.div>
+            {/* Mobile chip row */}
+            <div className="mt-6 flex md:hidden flex-wrap justify-center gap-2">
+              {orbitChips.map((c) => (
+                <span
+                  key={c.label}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-background border border-border px-3 py-1.5 text-xs font-medium"
+                >
+                  <c.icon className="w-3.5 h-3.5 text-primary" />
+                  {c.label}
+                </span>
+              ))}
             </div>
           </motion.div>
         </div>

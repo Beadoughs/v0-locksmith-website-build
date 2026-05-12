@@ -1,158 +1,171 @@
 import Link from "next/link"
-import { Phone, Mail, Clock, Shield, Facebook, Instagram, Linkedin } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react"
+import { BrandLogo } from "@/components/brand-logo"
+import { site } from "@/lib/site"
 
-const footerLinks = {
-  services: [
-    { label: "Residential Locksmith", href: "#services" },
-    { label: "Commercial Locksmith", href: "#services" },
-    { label: "Automotive Locksmith", href: "#services" },
-    { label: "Emergency Lockouts", href: "#services" },
-    { label: "Lock Repairs", href: "#services" },
-  ],
-  company: [
-    { label: "About Us", href: "#why-us" },
-    { label: "Why Choose Us", href: "#why-us" },
-    { label: "Reviews", href: "#reviews" },
-    { label: "Service Areas", href: "#areas" },
-    { label: "Contact", href: "#quote" },
-  ],
-  areas: [
-    "Melbourne CBD",
-    "South Yarra",
-    "St Kilda",
-    "Richmond",
-    "Carlton",
-    "Fitzroy",
-  ],
-}
+const services = [
+  { label: "Locksmith Services", href: "#services" },
+  { label: "Security Doors", href: "#services" },
+  { label: "Automotive Locksmith", href: "#services" },
+  { label: "Commercial & Strata", href: "#services" },
+  { label: "CCTV & Alarms", href: "#services" },
+  { label: "Safes", href: "#services" },
+]
+
+const company = [
+  { label: "About Us", href: "#why-us" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Service Areas", href: "#areas" },
+  { label: "Contact", href: "#contact" },
+]
+
+const areas = [
+  "Launceston CBD",
+  "South Launceston",
+  "Kings Meadows",
+  "Newstead",
+  "Riverside",
+  "Mowbray",
+]
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-secondary/40 border-t border-border">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <p className="font-bold text-lg leading-tight text-foreground">Melbourne</p>
-                <p className="text-xs text-muted-foreground -mt-0.5">Locksmiths</p>
-              </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+          <div className="lg:col-span-4">
+            <Link href="/" aria-label={site.name}>
+              <BrandLogo />
             </Link>
-            <p className="text-muted-foreground text-sm mb-6">
-              Melbourne&apos;s trusted 24/7 emergency locksmith service. Licensed, insured, and ready to help.
+            <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
+              {site.description}
             </p>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
+            <div className="mt-6 space-y-3">
               <a
-                href="tel:1300000000"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
+                href={`tel:${site.phoneTel}`}
+                className="group flex items-center gap-3 text-foreground hover:text-primary transition-colors"
               >
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">1300 000 000</span>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="text-sm font-semibold">{site.phone}</span>
               </a>
               <a
-                href="mailto:info@melbournelocksmiths.com.au"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-3 text-foreground/90 hover:text-primary transition-colors"
               >
-                <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm">info@melbournelocksmiths.com.au</span>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span className="text-sm">{site.email}</span>
               </a>
+              <div className="flex items-start gap-3 text-muted-foreground">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary mt-0.5">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span className="text-sm leading-relaxed">
+                  {site.address.line1}
+                  <br />
+                  {site.address.suburb} {site.address.state} {site.address.postcode}
+                </span>
+              </div>
               <div className="flex items-center gap-3 text-muted-foreground">
-                <Clock className="w-4 h-4 text-primary" />
-                <span className="text-sm">Open 24/7, 365 days</span>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Clock className="h-4 w-4" />
+                </span>
+                <span className="text-sm">{site.hours}</span>
               </div>
             </div>
           </div>
 
-          {/* Services Links */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Services
+            </h3>
+            <ul className="mt-4 space-y-2.5">
+              {services.map((s) => (
+                <li key={s.label}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    href={s.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {s.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Company
+            </h3>
+            <ul className="mt-4 space-y-2.5">
+              {company.map((c) => (
+                <li key={c.label}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    href={c.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {c.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Service Areas */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Service Areas</h3>
-            <ul className="space-y-3">
-              {footerLinks.areas.map((area) => (
-                <li key={area}>
-                  <span className="text-sm text-muted-foreground">{area}</span>
-                </li>
+          <div className="lg:col-span-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Service Areas
+            </h3>
+            <ul className="mt-4 grid grid-cols-2 gap-y-2.5 gap-x-4">
+              {areas.map((a) => (
+                <li key={a} className="text-sm text-muted-foreground">{a}</li>
               ))}
               <li>
                 <Link
                   href="#areas"
-                  className="text-sm text-primary hover:text-primary/80 transition-colors"
+                  className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                 >
-                  View all areas →
+                  View all →
                 </Link>
               </li>
             </ul>
+
+            <div className="mt-6 rounded-2xl border border-border bg-background p-4">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                Established
+              </p>
+              <p className="mt-1 text-lg font-bold text-foreground">{site.established}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Servicing {site.region} for over {new Date().getFullYear() - site.established} years
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Melbourne Locksmiths. All rights reserved.
+          <p className="text-sm text-muted-foreground text-center md:text-left">
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            <a
-              href="#"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a
-              href="#"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a
-              href="#"
-              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
+          <div className="flex items-center gap-2">
+            {[
+              { href: site.social.facebook, label: "Facebook", icon: Facebook },
+              { href: site.social.instagram, label: "Instagram", icon: Instagram },
+              { href: site.social.linkedin, label: "LinkedIn", icon: Linkedin },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                aria-label={s.label}
+                className="h-9 w-9 rounded-lg bg-background border border-border inline-flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors"
+              >
+                <s.icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

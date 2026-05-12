@@ -1,100 +1,197 @@
 "use client"
 
-import { Phone, MessageSquare, Clock, Shield } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { site } from "@/lib/site"
 
 export function CTASection() {
   return (
-    <section id="quote" className="py-20 md:py-28 bg-primary relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
-      </div>
+    <section id="contact" className="relative py-20 md:py-28 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary via-primary to-primary/90" />
+      <div
+        className="absolute inset-0 -z-10 opacity-15"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+          backgroundSize: "24px 24px",
+        }}
+        aria-hidden="true"
+      />
+      <div className="absolute -top-32 -right-32 -z-10 h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl" />
+      <div className="absolute -bottom-32 -left-20 -z-10 h-[360px] w-[360px] rounded-full bg-accent/30 blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-balance"
-          >
-            Need a Locksmith Fast?
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto"
-          >
-            Don&apos;t wait locked out. Our expert technicians are standing by 24/7 to help you. Call now for immediate assistance.
-          </motion.p>
-
-          {/* Trust badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-8 flex flex-wrap justify-center gap-6 text-primary-foreground/80"
-          >
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              <span className="text-sm font-medium">15 min response</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium">Licensed & Insured</span>
-            </div>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 text-lg px-8 py-6"
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-stretch">
+          {/* Left: pitch + contact */}
+          <div className="lg:col-span-2 text-primary-foreground">
+            <motion.span
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block rounded-full bg-white/15 backdrop-blur px-3 py-1 text-xs font-semibold tracking-wider uppercase"
             >
-              <a href="tel:1300000000" className="flex items-center gap-2">
-                <Phone className="w-5 h-5" />
-                Call Now: 1300 000 000
+              Get in touch
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance"
+            >
+              Talk to a master locksmith today
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="mt-4 text-lg text-primary-foreground/85 max-w-md"
+            >
+              Whether it&apos;s an emergency lockout or a full security upgrade — call us, and we&apos;ll get
+              you sorted today.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="mt-8 space-y-3"
+            >
+              <a
+                href={`tel:${site.phoneTel}`}
+                className="group flex items-center gap-4 rounded-2xl bg-white/10 hover:bg-white/15 transition-colors p-4 backdrop-blur"
+              >
+                <div className="h-12 w-12 rounded-xl bg-white text-primary inline-flex items-center justify-center">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs uppercase tracking-wider text-primary-foreground/70">
+                    Call us 24/7
+                  </p>
+                  <p className="text-xl font-bold">{site.phone}</p>
+                </div>
+                <ArrowRight className="h-5 w-5 text-primary-foreground/70 transition-transform group-hover:translate-x-0.5" />
               </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-6"
-            >
-              <Link href="#contact" className="flex items-center gap-2">
-                <MessageSquare className="w-5 h-5" />
-                Request Quote
-              </Link>
-            </Button>
-          </motion.div>
+              <a
+                href={`tel:${site.phoneLocalTel}`}
+                className="flex items-center gap-3 rounded-xl px-2 py-1 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                Local: {site.phoneLocal}
+              </a>
+              <a
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-3 rounded-xl px-2 py-1 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <Mail className="h-4 w-4" />
+                {site.email}
+              </a>
+              <div className="flex items-center gap-3 rounded-xl px-2 py-1 text-sm text-primary-foreground/80">
+                <MapPin className="h-4 w-4" />
+                {site.address.line1}, {site.address.suburb} {site.address.state} {site.address.postcode}
+              </div>
+              <div className="flex items-center gap-3 rounded-xl px-2 py-1 text-sm text-primary-foreground/80">
+                <Clock className="h-4 w-4" />
+                {site.hours}
+              </div>
+            </motion.div>
+          </div>
 
-          {/* Phone number highlight */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          {/* Right: form card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 text-primary-foreground/60 text-sm"
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="lg:col-span-3"
           >
-            Available 24 hours a day, 7 days a week, 365 days a year
-          </motion.p>
+            <div className="rounded-3xl bg-card border border-border/0 p-6 md:p-8 shadow-2xl shadow-black/10">
+              <div className="mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground">Request a fast quote</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Tell us what you need — we&apos;ll get back to you the same business day.
+                </p>
+              </div>
+
+              <form
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full name</Label>
+                  <Input id="name" placeholder="John Smith" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input id="phone" type="tel" placeholder="04xx xxx xxx" />
+                </div>
+                <div className="space-y-2 sm:col-span-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" placeholder="you@email.com" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="suburb">Suburb</Label>
+                  <Input id="suburb" placeholder="Launceston" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="service">Service needed</Label>
+                  <select
+                    id="service"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Select a service</option>
+                    <option>Emergency lockout</option>
+                    <option>Locksmith / lock change</option>
+                    <option>Security or screen door</option>
+                    <option>Automotive (car keys)</option>
+                    <option>CCTV or alarms</option>
+                    <option>Safe</option>
+                    <option>Commercial / strata</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="space-y-2 sm:col-span-2">
+                  <Label htmlFor="message">How can we help?</Label>
+                  <Textarea id="message" rows={4} placeholder="A few quick details about what you need…" />
+                </div>
+
+                <div className="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-2">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-base h-12 px-7 shadow-lg shadow-primary/20"
+                  >
+                    Send enquiry
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button
+                    asChild
+                    type="button"
+                    variant="outline"
+                    size="lg"
+                    className="h-12 px-7"
+                  >
+                    <Link href={`tel:${site.phoneTel}`}>
+                      <Phone className="mr-2 h-4 w-4" />
+                      Or call us now
+                    </Link>
+                  </Button>
+                </div>
+
+                <p className="sm:col-span-2 text-xs text-muted-foreground">
+                  By submitting you agree to be contacted about your enquiry. We never share your details.
+                </p>
+              </form>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
